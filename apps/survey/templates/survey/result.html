@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Results Page</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'survey/css/styles.css' %}" media="screen" title="no title">
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Thanks for submitting this form!</h1>
+		<h2> You have submitted this form {{request.session.count}} times now.</h2>
+		<div id="leftside">
+			<h2>Submitted Information</h2>
+			<p>Name:</p>
+			<p>Dojo Location:</p>
+			<p>Favorite Language:</p>
+			<p>Comment:</p>
+		</div> <!-- end of leftside -->
+		<div id="rightside">
+			<p>{{request.session.name}}</p>
+			<p>{{request.session.location}}</p>
+			<p>{{request.session.language}}</p>
+			<p>{{request.session.comments}}</p>
+	</div> <!-- end of wrapper -->
+	<a href="{% url 'my_survey:reset' %}"><button>Go Back</button></a>
+</body>
+</html>

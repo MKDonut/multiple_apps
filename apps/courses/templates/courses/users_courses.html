@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Awesome Link Between Users and Courses</title>
+</head>
+<body>
+	<h2>Linking Users and Courses</h2>
+	<form action="{% url 'my_courses:users_courses' %}" method="POST">
+	{% csrf_token %}
+		<select name = "user_id">
+		{% for user in users %}
+		 <option value="{{user.id}}">
+		 {{user.first_name}} {{user.last_name}}
+		 </option>
+		 {% endfor %}
+		 </select>	
+	
+		<select name = "course_id">
+		{% for course in courses %}
+		<option value="{{course.id}}">
+		{{course.name}}
+		</option>
+		{% endfor %}
+		</select>	
+	
+		<input type="submit" value = "Add User To Course">
+	</form>
+	<table>
+		<tr><th>Course</th>
+			<th>Title</th>
+			<th>Number of Users</th>
+		</tr>
+		{% for course in courses%}
+		<tr><td>{{course.id}}</td>
+			<td>{{course.name}}</td>
+			<td>{{course.students}}</td>
+		</tr>
+		{% endfor %}
+		<a href="{% url 'my_users:success' %}"><button>Return Home</button></a>
+</body>
+</html>

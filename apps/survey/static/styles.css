@@ -1,0 +1,14 @@
+#wrapper{
+	background-color: lightgrey;
+	width: 900px;
+	margin: 0 auto;
+}
+
+#rightside, #leftside{
+	display:inline-block;
+	vertical-align: top;
+}
+
+p{
+	display: block;
+}

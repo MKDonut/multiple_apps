@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Courses Index Page!!</title>
+	
+</head>
+<body>
+	<div id="add_course">
+		<form action="{% url 'my_courses:create_course' %}" method="post">
+		{% csrf_token %}
+			<h1>Add a new course:</h1>
+			<h2>Name: <input type="text" name="name" placeholder="type name"></h2>
+			<h2>Description: <textarea name="description" rows="4" cols="25"></textarea></h2>
+			<p><input type="submit" value = "Add Course"></p>
+		</form>
+	</div> <!-- end of add_course div -->
+	<div id="course_table">
+		<h1>Courses</h1>
+			<form>
+				<table>
+					<tr>
+						<th>Course Name</th>
+						<th>Description</th>
+						<th>Date Added</th>
+						<th>Actions</th>
+					</tr>
+					{% for item in blah %}
+						<tr>
+							<td>{{item.name}}</td>
+							<td>{{item.description}}</td>
+							<td>{{item.created_at}}</td>
+							 <td><a href="{% url 'my_courses:remove' id=item.id %}">Remove</a></td>
+					{% endfor %}
+					</tr>
+					
+				</table>
+			</form>
+	</div> <!-- end of course_table -->
+</body>
+</html>

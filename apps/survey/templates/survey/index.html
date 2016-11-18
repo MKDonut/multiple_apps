@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'survey/css/styles.css' %}" media="screen" title="no title">
+</head>
+<body>
+	<div id="wrapper">
+	<form action="{% url 'my_survey:process' %}" method="post">
+		{% csrf_token %}
+		<div id="leftside">
+			<p>Your Name:</p>
+			<p>Dojo Location:</p>
+			<p>Favorite Language:</p>
+			<p>Comment (optional):</p>
+			<textarea placeholder="Please comment..." value="text" name="comments" rows="5" cols="50"> </textarea>
+			<a href="/"><button>Submit</button></a>
+		</div> <!-- end of leftside -->
+		<div id="rightside">
+				<input type="text" name="name">
+				<select name="location">
+					<option value="seattle">Seattle</option>
+					<option value="chicago">Chicago</option>
+					<option value="san_francisco">San Francisco</option>
+				</select>
+				<select name="language">
+					<option value="python">Python</option>
+					<option value="javascript">JavaScript</option>
+					<option value="ruby">Ruby on Rails</option>
+				</select>
+			</form>
+		</div> <!-- end of rightside -->
+		
+	</div> <!-- end of wrapper -->
+</body>
+</html>
